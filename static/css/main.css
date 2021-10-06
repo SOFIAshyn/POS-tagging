@@ -1,0 +1,38 @@
+body, html {
+    margin: 0;
+    font-family: sans-serif;
+    color: #2c3531;
+}
+
+h4{
+    margin-top: 0em;
+    width: 45%;
+    text-align: center;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.form form .textarea {
+    height: 30em;
+    background-repeat: round;
+}
+
+.button{
+    color: #2c3531;
+}
+
+.visualization{
+    display: grid;
+    grid-template-columns: 5fr 0.5fr;
+}
+
+#legend{
+    align-self: center;
+}
+
+.text_parcing_result img{
+    height: 100px;
+    width: 150px;
+}

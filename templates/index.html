@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>POS Country Classification</title>
+
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Document Classification leveraging POS tagging</h1>
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+        <div class="form form-group">
+            <form action="/" method="POST">
+                <label for="exampleInputEmail1">Text input form to determine the country of origin of the text</label>
+                <textarea name="content" id="exampleInputEmail1" placeholder="Input a text.." class="textarea form-control">{% if article|length >= 1 %}{% for art in article %}{{ art.content }}{% endfor %}{% endif %}</textarea>
+                <input type="submit" class="form-control" value="Detect country of text origin" aria-describedby="detailsOfClassification">
+                <small id="detailsOfClassification" class="form-text text-muted">The classification of text origin performs great on medicine related data.</small>
+            </form>
+        </div>
+        </div>
+
+        <div class="col-sm-3">
+        <div class="text_parcing_result">
+            {% if pred_countries|length < 1 %}
+                <h4>The country name will be here. Please input long text.</h4>
+            {% else %}
+                <h4>The text origin country and percentage of belonging: </h4>
+                {% for p_c in pred_countries %}
+                    <div class="row result">
+                        <div class="col-sm">
+                            <div class="country_name">{{ p_c.country_name }}: {{ p_c.probability }}%</div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="country_flag">
+                                <img src="{{url_for('static', filename=p_c.flag_photo_path)}}" alt="Most probable country image.">
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
