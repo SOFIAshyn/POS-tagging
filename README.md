@@ -9,5 +9,3 @@ To see how it works, run:
 python3 my_app.py
 ```
 Then insert a text (you can take any text from `./data/articles_example`), press 'Detect country of origin' button and see to which country it belongs.
-# POS-tagging
-# POS-tagging
